@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Crie sua conta</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<div id="container">
+  <div class="main">
+    <form [formGroup]="formRegister" (ngSubmit)="onSubmit()">
+      <ion-item>
+        <ion-label position="floating">Nome</ion-label>
+        <ion-input
+          formControlName="name"
+          type="text"
+          placeholder="Digite seu nome"
+        ></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">E-mail</ion-label>
+        <ion-input
+          formControlName="email"
+          type="email"
+          placeholder="Digite seu e-mail"
+        ></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Celular</ion-label>
+        <ion-input
+          formControlName="celphone"
+          type="text"
+          placeholder="Digite seu celular"
+        ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Senha</ion-label>
+        <ion-input
+          formControlName="password"
+          type="password"
+          placeholder="Digite sua senha"
+        ></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Confirmação de senha</ion-label>
+        <ion-input
+          formControlName="confirmPassword"
+          type="password"
+          placeholder="Confirmação de senha"
+        ></ion-input>
+      </ion-item>
+
+      <ion-button
+        routerLink="/initial"
+        type="submit"
+        color="danger"
+        expand="block"
+        >Criar conta</ion-button
+      >
+    </form>
+
+    <p>Voltar para o Login</p>
+    <ion-button routerLink="/home" color="light" size="small" fill="solid">
+      Voltar
+    </ion-button>
+  </div>
+</div>
