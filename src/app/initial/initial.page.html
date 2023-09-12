@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Seja bem vindo, Danilo</ion-title>
+    <ion-button routerLink="/home" color="light" size="small" fill="solid">
+      Sair
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-select
+        (ionChange)="handleChange($event)"
+        interface="popover"
+        placeholder="Selecione um Restaurante"
+      >
+        <ion-select-option *ngFor="let item of restaurants" [value]="item[0]"
+          >{{item[0]}}</ion-select-option
+        >
+      </ion-select>
+    </ion-item>
+  </ion-list>
+  <ion-datetime presentation="date" (ionChange)="onDateTimeChanged($event)"
+    >Selecione</ion-datetime
+  >
+
+  <ion-text *ngIf="hasRestaurant === true" color="tertiary">
+    <h3>{{restaurantName}} possui: {{availableTables}} disponíveis</h3>
+  </ion-text>
+
+  <ion-button (click)="makeResarvation()" color="danger" expand="block"
+    >Fazer uma Reserva</ion-button
+  >
+</ion-content>
