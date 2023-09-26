@@ -4,11 +4,11 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { AlertController } from '@ionic/angular';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: 'home.page.html',
-  styleUrls: ['home.page.scss'],
+  selector: 'app-login-restaurants',
+  templateUrl: './login-restaurants.page.html',
+  styleUrls: ['./login-restaurants.page.scss'],
 })
-export class HomePage implements OnInit {
+export class LoginRestaurantsPage implements OnInit {
   constructor(
     private readonly http: HttpClient,
     private alertController: AlertController
@@ -29,16 +29,16 @@ export class HomePage implements OnInit {
     const alert = await this.alertController.create({
       header: 'Credencias Inválidas',
       cssClass: 'custom-alert',
-      message: 'Credencias Inválidas',
+      message: 'Credencias incorretas!',
       buttons: ['OK'],
     });
 
-    const user = {
+    const restaurant = {
       email: email,
       password: password,
     };
     await this.http
-      .post('http://localhost:3000/clients/login', user)
+      .post('http://localhost:3000/restaurants/login', restaurant)
       .subscribe();
   }
 }

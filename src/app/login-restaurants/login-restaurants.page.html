@@ -1,16 +1,15 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title> Ta na Mesa </ion-title>
+    <ion-title> Restaurantes</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Ta na Mesa</ion-title>
+      <ion-title size="large">Restaurantes</ion-title>
     </ion-toolbar>
   </ion-header>
-
   <div id="container">
     <div class="main">
       <form [formGroup]="formData" (ngSubmit)="onSubmit()">
@@ -41,24 +40,18 @@
         >
       </form>
 
-      <p>Não possui uma conta? Clique aqui e crie uma.</p>
+      <p>Deseja virar um Restaurante parceiro?</p>
       <ion-button
-        routerLink="/register"
+        routerLink="/register-restaurants"
         color="light"
         size="small"
         fill="solid"
       >
-        Registrar
+        Cadastrar-se
       </ion-button>
 
-      <p>É um restaurante parceiro ou quer se tornar um.</p>
-      <ion-button
-        routerLink="/login-restaurants"
-        color="light"
-        size="small"
-        fill="solid"
-      >
-        Clique aqui
+      <ion-button routerLink="/home" color="light" size="small" fill="solid">
+        Voltar
       </ion-button>
     </div>
   </div>

@@ -19,6 +19,14 @@ const routes: Routes = [
     path: 'initial',
     loadChildren: () => import('./initial/initial.module').then( m => m.InitialPageModule)
   },
+  {
+    path: 'login-restaurants',
+    loadChildren: () => import('./login-restaurants/login-restaurants.module').then( m => m.LoginRestaurantsPageModule)
+  },
+  {
+    path: 'register-restaurants',
+    loadChildren: () => import('./register-restaurants/register-restaurants.module').then( m => m.RegisterRestaurantsPageModule)
+  },
 ];
 
 @NgModule({
