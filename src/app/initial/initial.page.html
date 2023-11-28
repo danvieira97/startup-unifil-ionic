@@ -26,10 +26,10 @@
   >
 
   <ion-text *ngIf="hasRestaurant === true" color="tertiary">
-    <h3>{{restaurantName}} possui: {{availableTables}} disponíveis</h3>
+    <h3>{{restaurantName}} possui: {{availableTables}} mesas disponíveis</h3>
   </ion-text>
 
-  <ion-button (click)="makeResarvation()" color="danger" expand="block"
+  <ion-button (click)="makeResarvation(restaurantName)" color="danger" expand="block"
     >Fazer uma Reserva</ion-button
   >
 </ion-content>

@@ -31,6 +31,7 @@ export class InitialPage implements OnInit {
             data.name,
             data.availableDays,
             data.availableTables,
+            data._id,
           ]);
         });
       });
@@ -51,10 +52,12 @@ export class InitialPage implements OnInit {
     this.reservationDate = e.target.value;
   }
 
-  async makeResarvation() {
-    await this.http
+  async makeResarvation(name: string) {
+    const currentRestaurant = this.restaurants.filter((r) => r[0] === name);
+
+    this.http
       .patch(
-        'http://localhost:3000/restaurants/makeReservation/641f1502fd42cb4ffb0ace11',
+        'http://localhost:3000/restaurants/makeReservation/'+currentRestaurant[0][3],
         null
       )
       .subscribe();
@@ -68,5 +71,6 @@ export class InitialPage implements OnInit {
     });
 
     await alert.present();
+    window.location.reload()
   }
 }
