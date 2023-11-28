@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { AlertController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -11,7 +12,8 @@ import { AlertController } from '@ionic/angular';
 export class HomePage implements OnInit {
   constructor(
     private readonly http: HttpClient,
-    private alertController: AlertController
+    private alertController: AlertController,
+    private router: Router
   ) {}
 
   public formData: FormGroup;
@@ -25,7 +27,7 @@ export class HomePage implements OnInit {
   async onSubmit() {
     const email = this.formData.value.email;
     const password = this.formData.value.password;
-
+    
     const alert = await this.alertController.create({
       header: 'Credencias Inválidas',
       cssClass: 'custom-alert',
@@ -37,8 +39,12 @@ export class HomePage implements OnInit {
       email: email,
       password: password,
     };
-    await this.http
+    this.http
       .post('http://localhost:3000/clients/login', user)
-      .subscribe();
+      .subscribe({
+        next: (res) => {if(res == "OK"){this.router.navigate(['/initial']);}},
+        error: error => {alert.present();},
+        complete: () => this.router.navigate(['/initial'])
+      })
   }
 }
