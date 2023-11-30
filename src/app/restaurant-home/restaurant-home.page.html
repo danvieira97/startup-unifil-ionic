@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Seja bem vindo</ion-title>
+    <ion-button routerLink="/login-restaurants" color="light" size="small" fill="solid">
+      Sair
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<div id="container">
+  <div class="main">
+    <form [formGroup]="formRegister" (ngSubmit)="onSubmit()">
+      <ion-item>
+        <ion-label position="floating">Nome</ion-label>
+        <ion-input
+          formControlName="name"
+          type="text"
+        ></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Mesas disponíveis</ion-label>
+        <ion-input
+          formControlName="availableTables"
+          type="text"
+        ></ion-input>
+      </ion-item>
+
+      <ion-button
+        type="submit"
+        color="danger"
+        expand="block"
+        >Atualizar Restaurante</ion-button
+      >
+    </form>
+
+    <p>Voltar para o Login</p>
+    <ion-button
+      routerLink="/login-restaurants"
+      color="light"
+      size="small"
+      fill="solid"
+    >
+      Voltar
+    </ion-button>
+  </div>
+</div>

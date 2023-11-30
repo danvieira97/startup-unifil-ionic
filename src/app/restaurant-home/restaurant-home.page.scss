@@ -1,0 +1,45 @@
+#container {
+    text-align: center;
+  
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  #container strong {
+    font-size: 20px;
+    line-height: 26px;
+  }
+  
+  #container p {
+    font-size: 16px;
+    line-height: 16px;
+  
+    color: #000000;
+  
+    margin: 0;
+  }
+  
+  #container a {
+    text-decoration: none;
+  }
+  
+  .main {
+    border: solid 1px #FFFFFF;
+    padding: 1em;
+    margin: 1em;
+    border-radius: 10px;
+    background-color: #F8FFF4;
+  }
+  
+  .main ion-button {
+    margin-top: 1em;
+    margin-bottom: 1em;
+  }
+  
+  .content {
+    color: #FFFFFF;
+  }
+  
