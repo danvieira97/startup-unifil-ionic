@@ -9,7 +9,10 @@ import { AlertController } from '@ionic/angular';
   styleUrls: ['./register-restaurants.page.scss'],
 })
 export class RegisterRestaurantsPage implements OnInit {
-  constructor(private readonly http: HttpClient, private alertController: AlertController) {}
+  constructor(
+    private readonly http: HttpClient,
+    private alertController: AlertController
+  ) {}
 
   public formRegister: FormGroup;
   ngOnInit() {
@@ -29,7 +32,7 @@ export class RegisterRestaurantsPage implements OnInit {
     const password = this.formRegister.value.password;
     const confirmPassword = this.formRegister.value.confirmPassword;
 
-    const availableDays = []
+    const availableDays = [];
     for (let i = 1; i <= 31; i++) {
       availableDays.push(i);
     }
@@ -51,18 +54,27 @@ export class RegisterRestaurantsPage implements OnInit {
     });
 
     const alertError = await this.alertController.create({
-      header: "Erro",
+      header: 'Erro',
       cssClass: 'custom-alert',
       message: 'Erro ao registrar o restaurante',
-      buttons: ['OK']
+      buttons: ['OK'],
     });
 
     await this.http
-      .post('http://localhost:3000/restaurants/createRestaurant', restaurant)
+      .post(
+        'http://18.231.187.61:3000/restaurants/createRestaurant',
+        restaurant
+      )
       .subscribe({
-        next: (res) => {if(res == "OK"){alert.present();}},
-        error: error => {alertError.present();},
-        complete: () => alert.present()
-      })
+        next: (res) => {
+          if (res == 'OK') {
+            alert.present();
+          }
+        },
+        error: (error) => {
+          alertError.present();
+        },
+        complete: () => alert.present(),
+      });
   }
 }

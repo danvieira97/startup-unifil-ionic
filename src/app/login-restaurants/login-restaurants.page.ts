@@ -39,12 +39,18 @@ export class LoginRestaurantsPage implements OnInit {
       email: email,
       password: password,
     };
-    
+
     this.http
-      .post('http://localhost:3000/restaurants/loginRestaurant', restaurant)
+      .post('http://18.231.187.61:3000/restaurants/loginRestaurant', restaurant)
       .subscribe({
-        next: (res: any) => {this.router.navigate(['/restaurant-home'], { queryParams: {id: res._id}})},
-        error: _error => { alert.present(); }
+        next: (res: any) => {
+          this.router.navigate(['/restaurant-home'], {
+            queryParams: { id: res._id },
+          });
+        },
+        error: (_error) => {
+          alert.present();
+        },
       });
   }
 }

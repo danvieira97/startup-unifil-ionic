@@ -24,7 +24,7 @@ export class InitialPage implements OnInit {
   async ngOnInit() {
     this.restaurants = [];
     await this.http
-      .get<any[]>('http://localhost:3000/restaurants/getAllRestaurants')
+      .get<any[]>('http://18.231.187.61:3000/restaurants/getAllRestaurants')
       .forEach((value) => {
         value.forEach((data) => {
           this.restaurants.push([
@@ -57,7 +57,8 @@ export class InitialPage implements OnInit {
 
     this.http
       .patch(
-        'http://localhost:3000/restaurants/makeReservation/'+currentRestaurant[0][3],
+        'http://18.231.187.61:3000/restaurants/makeReservation/' +
+          currentRestaurant[0][3],
         null
       )
       .subscribe();
@@ -71,6 +72,6 @@ export class InitialPage implements OnInit {
     });
 
     await alert.present();
-    window.location.reload()
+    window.location.reload();
   }
 }

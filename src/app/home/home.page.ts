@@ -27,7 +27,7 @@ export class HomePage implements OnInit {
   async onSubmit() {
     const email = this.formData.value.email;
     const password = this.formData.value.password;
-    
+
     const alert = await this.alertController.create({
       header: 'Credencias Inválidas',
       cssClass: 'custom-alert',
@@ -39,12 +39,16 @@ export class HomePage implements OnInit {
       email: email,
       password: password,
     };
-    this.http
-      .post('http://localhost:3000/clients/login', user)
-      .subscribe({
-        next: (res) => {if(res == "OK"){this.router.navigate(['/initial']);}},
-        error: error => {alert.present();},
-        complete: () => this.router.navigate(['/initial'])
-      })
+    this.http.post('http://18.231.187.61:3000/clients/login', user).subscribe({
+      next: (res) => {
+        if (res == 'OK') {
+          this.router.navigate(['/initial']);
+        }
+      },
+      error: (error) => {
+        alert.present();
+      },
+      complete: () => this.router.navigate(['/initial']),
+    });
   }
 }

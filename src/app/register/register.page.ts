@@ -38,7 +38,7 @@ export class RegisterPage implements OnInit {
     };
 
     await this.http
-      .post('http://localhost:3000/clients/createClient', user)
+      .post('http://18.231.187.61:3000/clients/createClient', user)
       .subscribe();
   }
 }

@@ -9,28 +9,30 @@ import { AlertController } from '@ionic/angular';
   styleUrls: ['./restaurant-home.page.scss'],
 })
 export class RestaurantHomePage implements OnInit {
-
-  constructor(private readonly http: HttpClient, private alertController: AlertController) {}
+  constructor(
+    private readonly http: HttpClient,
+    private alertController: AlertController
+  ) {}
 
   public formRegister: FormGroup;
   ngOnInit() {
     this.formRegister = new FormGroup({
       name: new FormControl(),
-      availableTables: new FormControl()
+      availableTables: new FormControl(),
     });
 
     const id = window.location.href.split('?')[1].split('=')[1];
-    this.http.get('http://localhost:3000/restaurants/'+id).subscribe({
-      next: (res:any) => {
+    this.http.get('http://18.231.187.61:3000/restaurants/' + id).subscribe({
+      next: (res: any) => {
         this.formRegister.setValue({
           name: res.name,
-          availableTables: res.availableTables
+          availableTables: res.availableTables,
         });
-      ;},
-      error: error => {console.log(error);}
+      },
+      error: (error) => {
+        console.log(error);
+      },
     });
-    
-      
   }
 
   async onSubmit() {
@@ -51,18 +53,27 @@ export class RestaurantHomePage implements OnInit {
     });
 
     const alertError = await this.alertController.create({
-      header: "Erro",
+      header: 'Erro',
       cssClass: 'custom-alert',
       message: 'Erro ao atualizar o restaurante',
-      buttons: ['OK']
+      buttons: ['OK'],
     });
 
     await this.http
-      .patch('http://localhost:3000/restaurants/updateRestaurant/'+id, restaurant)
+      .patch(
+        'http://18.231.187.61:3000/restaurants/updateRestaurant/' + id,
+        restaurant
+      )
       .subscribe({
-        next: (res) => {if(res == "OK"){alert.present();}},
-        error: error => {alertError.present();},
-        complete: () => alert.present()
-      })
+        next: (res) => {
+          if (res == 'OK') {
+            alert.present();
+          }
+        },
+        error: (error) => {
+          alertError.present();
+        },
+        complete: () => alert.present(),
+      });
   }
 }
