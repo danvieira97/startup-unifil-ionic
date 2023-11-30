@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 
 @Component({
@@ -11,7 +12,8 @@ import { AlertController } from '@ionic/angular';
 export class LoginRestaurantsPage implements OnInit {
   constructor(
     private readonly http: HttpClient,
-    private alertController: AlertController
+    private alertController: AlertController,
+    private router: Router
   ) {}
 
   public formData: FormGroup;
@@ -37,8 +39,12 @@ export class LoginRestaurantsPage implements OnInit {
       email: email,
       password: password,
     };
-    await this.http
-      .post('http://localhost:3000/restaurants/login', restaurant)
-      .subscribe();
+    
+    this.http
+      .post('http://localhost:3000/restaurants/loginRestaurant', restaurant)
+      .subscribe({
+        next: (res: any) => {this.router.navigate(['/restaurant-home'], { queryParams: {id: res._id}})},
+        error: _error => { alert.present(); }
+      });
   }
 }
